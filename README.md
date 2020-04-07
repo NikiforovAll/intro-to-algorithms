@@ -1,4 +1,4 @@
-# Introduction to algorithms (playground)
+# Introduction to algorithms (playground) [![Build Status](https://travis-ci.com/NikiforovAll/intro-to-algorithms.svg?branch=master)](https://travis-ci.com/NikiforovAll/intro-to-algorithms)
 
 This repository is intended to demonstrate implementations of classic algorithms.
 
