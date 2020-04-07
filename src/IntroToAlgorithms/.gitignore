@@ -1,0 +1,7 @@
+bin/
+obj/
+Debug/
+Release/
+log/
+package_designTimeBuild.binlog
+package_fullBuild.binlog
