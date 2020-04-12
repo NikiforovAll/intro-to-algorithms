@@ -2,9 +2,18 @@
 
 This repository is intended to demonstrate implementations of classic algorithms.
 
+## Getting Started
+
+Prerequisites:
+
+* Install dotnet sdk `curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel 3.1`
+* Install dotnet tool `dotnet tool install -g dotnet-try`
+Run: `dotnet try`
+
 ## TOC
 
-* [Getting Started - Introduction](./docs/Index.md)
+* [Intro](./docs/Intro.md)
+* [Sorting](./docs/Sorting.md)
 
 ## Contribute
 
