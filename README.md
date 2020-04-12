@@ -8,16 +8,14 @@ Prerequisites:
 
 * Install dotnet sdk `curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel 3.1`
 * Install dotnet tool `dotnet tool install -g dotnet-try`
-Run: `dotnet try`
 
-## TOC
+
+* Run: `dotnet try`
+
+## Table of contents
 
 * [Intro](./docs/Intro.md)
 * [Sorting](./docs/Sorting.md)
-
-## Contribute
-
-* Commit: <https://github.com/carloscuesta/gitmoji-cli>
 
 ## Useful links
 
