@@ -11,8 +11,30 @@ Insertion sort is efficient algorithms for small number of elements. The index `
 Let's define sorter interface for convenience:
 
 ```csharp
-internal interface ISorter {
-    void Sort<T>(Span<T> arr) where T : IComparable<T>;
+interface ISorter<T> where T : IComparable<T> {
+    void Sort(Span<T> arr);
+}
+```
+Implementation:
+
+```csharp
+public void Sort(Span<TItem> arr)
+{
+    for (int i = 1; i < arr.Length; i++)
+    {
+        Insert(arr[0..(i + 1)], item: arr[i]);
+    }
+}
+
+private void Insert(Span<TItem> arr, TItem item)
+{
+    int i = arr.Length - 1;
+    // shift until element is in place
+    for (; i > 0 && item.CompareTo(arr[i - 1]) <= 0; i--)
+    {
+        arr[i] = arr[i - 1];
+    }
+    arr[i] = item;
 }
 ```
 

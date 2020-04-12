@@ -13,7 +13,7 @@ namespace Sorting {
         }
     }
 
-    internal interface ISorter {
-        void Sort<T>(Span<T> arr) where T : IComparable<T>;
+    internal interface ISorter<T> where T : IComparable<T> {
+        void Sort(Span<T> arr);
     }
 }
