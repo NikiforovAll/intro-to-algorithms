@@ -8,14 +8,14 @@ namespace Sorting
         {
             #region InsertionSort
             int[] data = { 5, 2, 4, 6, 1, 3 };
-            new InsertionSort<int>().Sort(data);
+            new InsertionSorter<int>().Sort(data);
             #endregion
 
             Console.WriteLine($"Result:\t{string.Join(',', data)}");
             return 0;
         }
 
-        private class InsertionSort<TItem> : ISorter<TItem> where TItem : IComparable<TItem>
+        private class InsertionSorter<TItem> : ISorter<TItem> where TItem : IComparable<TItem>
         {
             public void Sort(Span<TItem> arr)
             {
@@ -39,3 +39,4 @@ namespace Sorting
         }
     }
 }
+

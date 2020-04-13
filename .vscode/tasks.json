@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/IntroToAlgorithms/IntroToAlgorithms.csproj",
+                "${workspaceFolder}/src/Sorting/Sorting.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/IntroToAlgorithms/IntroToAlgorithms.csproj",
+                "${workspaceFolder}/src/Sorting/Sorting.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,23 +32,11 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/src/IntroToAlgorithms/IntroToAlgorithms.csproj",
+                "${workspaceFolder}/src/Sorting/Sorting.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "try",
-            "command": "dotnet",
-            "type": "shell",
-            "args": [
-                "try",
-                "--uri",
-                "./docs/Index.md",
-                "--verbose"
-            ],
-            "problemMatcher": ""
         }
     ]
 }
