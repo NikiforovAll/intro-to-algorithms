@@ -22,6 +22,7 @@ namespace Sorting
             {
                 "InsertionSort" => InsertionSortExample.InsertionSortOne(),
                 "MergeSort" => MergeSortExample.MergeSortOne(),
+                "HeapSort" => HeapSortExample.HeapSortOne(),
                 _ => RunAll()
             };
         }
@@ -30,6 +31,8 @@ namespace Sorting
         {
             InsertionSortExample.InsertionSortOne();
             MergeSortExample.MergeSortOne();
+            HeapSortExample.HeapSortOne();
+
             return 0;
         }
     }

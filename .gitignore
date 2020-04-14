@@ -17,3 +17,5 @@
 
 package_designTimeBuild.binlog
 package_fullBuild.binlog
+
+.trydotnet-builderror
