@@ -48,11 +48,13 @@ namespace Sorting
             private void MaxHeapify(Span<TItem> arr, int i)
             {
                 var heapSize = arr.Length - 1;
+                if(i > heapSize)
+                    return;
                 ref var node = ref arr[i];
                 var (left, right) = (2 * i + 1, 2 * i + 2);
                 ref var toSwap = ref LargestOf(
-                    ref left < heapSize ? ref arr[left] : ref arr[i],
-                    ref right < heapSize ? ref arr[right] : ref arr[i]);
+                    ref left <= heapSize ? ref arr[left] : ref arr[i],
+                    ref right <= heapSize ? ref arr[right] : ref arr[i]);
                 if (!node.Equals(LargestOf(ref node, ref toSwap)))
                 {
                     (node, toSwap) = (toSwap, node);

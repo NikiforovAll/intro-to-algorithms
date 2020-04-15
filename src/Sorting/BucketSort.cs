@@ -51,9 +51,9 @@ namespace Sorting
                 {
                     Console.Write($"[{item.k}] - {string.Join(',', item.items)}\t");
                 }
-                System.Console.WriteLine("");
+                Console.WriteLine("");
                 var sorted = buckets.SelectMany(b => b)
-                    .Select((item, i) => (item, i));
+                                    .Select((item, i) => (item, i));
                 // fill original array
                 foreach (var (item, i) in sorted)
                     arr[i] = item;

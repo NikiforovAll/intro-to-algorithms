@@ -137,15 +137,18 @@ private void BuildMaxHeap(Span<TItem> arr)
 private void MaxHeapify(Span<TItem> arr, int i)
 {
     var heapSize = arr.Length - 1;
+    if(i > heapSize)
+        return;
     ref var node = ref arr[i];
     var (left, right) = (2 * i + 1, 2 * i + 2);
     ref var toSwap = ref LargestOf(
-        ref left < heapSize ? ref arr[left] : ref arr[i],
-        ref right < heapSize ? ref arr[right] : ref arr[i]);
+        ref left <= heapSize ? ref arr[left] : ref arr[i],
+        ref right <= heapSize ? ref arr[right] : ref arr[i]);
     if (!node.Equals(LargestOf(ref node, ref toSwap)))
     {
         (node, toSwap) = (toSwap, node);
-        MaxHeapify(arr, left); MaxHeapify(arr, right);
+        MaxHeapify(arr, left);
+        MaxHeapify(arr, right);
     }
 }
 
@@ -246,7 +249,7 @@ public void Sort(Span<TItem> arr)
         buckets[j].Sort(IIdentifiableComparer); // abstract sort for a bucket
 
     var sorted = buckets.SelectMany(b => b)
-        .Select((item, i) => (item, i));
+                        .Select((item, i) => (item, i));
     // fill original array
     foreach (var (item, i) in sorted)
         arr[i] = item;
@@ -271,7 +274,7 @@ public void Sort(Span<TItem> arr)
         buckets[j].Sort();
 
     var sorted = buckets.SelectMany(b => b)
-        .Select((item, i) => (item, i));
+                        .Select((item, i) => (item, i));
     // fill original array
     foreach (var (item, i) in sorted)
         arr[i] = item;
