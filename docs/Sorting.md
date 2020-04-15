@@ -2,10 +2,19 @@
 
 In my opinion, understanding of classical algorithms is essential since it allows you to use them as reliable **building blocks**. Furthermore, it allows you to predict behavior and runtime complexity of solution if it is built based on well-known building blocks and techniques.
 
-- [Insertion sort](#insertion-sort)
-- [Merge Sort](#merge-sort)
-- [Heap Sort](#heap-sort)
-- [Quick Sort](#quick-sort)
+- [Sorting algorithms](#sorting-algorithms)
+  - [Insertion sort](#insertion-sort)
+    - [Implementation](#implementation)
+  - [Merge Sort](#merge-sort)
+    - [Implementation](#implementation-1)
+  - [Heap Sort](#heap-sort)
+    - [Max-Heapify](#max-heapify)
+    - [Implementation](#implementation-2)
+  - [Quick Sort](#quick-sort)
+    - [Implementation](#implementation-3)
+  - [Bucket Sort](#bucket-sort)
+    - [Implementation](#implementation-4)
+  - [Useful links](#useful-links)
 
 <img src="https://user-images.githubusercontent.com/8037439/79157842-f9c67a00-7ddd-11ea-8d29-94e2fdb7e43c.png" alt="alg-run-time" width="45%">
 
@@ -194,6 +203,82 @@ private int Partition(Span<TItem> arr)
 ```
 
 ```cs --project ../src/Sorting/Sorting.csproj --source-file ../src/Sorting/QuickSort.cs --region QuickSort --session QuickSort
+```
+
+## Bucket Sort
+
+There are family of algorithms that have better performance characteristics. For example, *Bucket Sort* assumes that input consists of integers distributed uniformly in a small range. This allows to use integer key to assign element to a bucket in a constant time and don't spend to much additional space for buckets allocation.
+
+So design technique - **make use of nature of input data**.
+
+<img src="https://user-images.githubusercontent.com/8037439/79342990-83895b00-7f36-11ea-9899-7cfd582a3ad9.png
+" alt="bucket-sort" width="30%">
+
+To define this type of algorithm, we need to define a separate interface:
+
+### Implementation
+
+```csharp
+internal interface IIdentifiableSorter<T> where T: IIdentifiable<int>
+{
+    void Sort(Span<T> arr);
+}
+
+internal interface IIdentifiable<TKey>
+{
+    TKey Id { get; set; }
+}
+```
+
+```csharp
+public void Sort(Span<TItem> arr)
+{
+    var buckets = new List<TItem>[NumberOfBuckets];
+    var length = arr.Length;
+    //init buckets
+    for (int i = 0; i < NumberOfBuckets; i++)
+        buckets[i] = new List<TItem>();
+    // fill buckets (normal distribution)
+    for (int i = 0; i < length; i++)
+        buckets[arr[i].Id / NumberOfBuckets].Add(arr[i]);
+    //sort buckets
+    for (int j = 0; j < NumberOfBuckets; j++)
+        buckets[j].Sort(IIdentifiableComparer); // abstract sort for a bucket
+
+    var sorted = buckets.SelectMany(b => b)
+        .Select((item, i) => (item, i));
+    // fill original array
+    foreach (var (item, i) in sorted)
+        arr[i] = item;
+}
+```
+
+We could avoid unnecessary clutter if we just want to work with `Span<int>`:
+
+```csharp
+internal interface IConvertibleSorter<T> where T : IConvertible
+{
+    void Sort(Span<T> arr);
+}
+// ...
+public void Sort(Span<TItem> arr)
+{
+    // fill buckets (normal distribution)
+    for (int i = 0; i < length; i++)
+        buckets[arr[i].ToInt32(default) / NumberOfBuckets].Add(arr[i]);
+    //sort buckets
+    for (int j = 0; j < NumberOfBuckets; j++)
+        buckets[j].Sort();
+
+    var sorted = buckets.SelectMany(b => b)
+        .Select((item, i) => (item, i));
+    // fill original array
+    foreach (var (item, i) in sorted)
+        arr[i] = item;
+}
+```
+
+```cs --project ../src/Sorting/Sorting.csproj --source-file ../src/Sorting/BucketSort.cs --region BucketSort --session BucketSort
 ```
 
 ## Useful links

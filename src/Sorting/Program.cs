@@ -25,6 +25,7 @@ namespace Sorting
                 "MergeSort" => MergeSortExample.MergeSortOne(),
                 "HeapSort" => HeapSortExample.HeapSortOne(),
                 "QuickSort" => QuickSortExample.QuickSortOne(),
+                "BucketSort" => BucketSortExample.BucketSortOne(),
                 _ => RunAll()
             };
         }
@@ -35,6 +36,8 @@ namespace Sorting
             MergeSortExample.MergeSortOne();
             HeapSortExample.HeapSortOne();
             QuickSortExample.QuickSortOne();
+            BucketSortExample.BucketSortOne();
+
             return 0;
         }
     }
@@ -42,5 +45,20 @@ namespace Sorting
     internal interface ISorter<T> where T : IComparable<T>
     {
         void Sort(Span<T> arr);
+    }
+
+    internal interface IIdentifiableSorter<T> where T: IIdentifiable<int>
+    {
+        void Sort(Span<T> arr);
+    }
+
+    internal interface IConvertibleSorter<T> where T : IConvertible
+    {
+        void Sort(Span<T> arr);
+    }
+
+    internal interface IIdentifiable<TKey>
+    {
+        TKey Id { get; set; }
     }
 }
