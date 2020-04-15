@@ -18,11 +18,13 @@ namespace Sorting
             string project = null,
             string[] args = null)
         {
-            return region switch
+            return region
+            switch
             {
                 "InsertionSort" => InsertionSortExample.InsertionSortOne(),
                 "MergeSort" => MergeSortExample.MergeSortOne(),
                 "HeapSort" => HeapSortExample.HeapSortOne(),
+                "QuickSort" => QuickSortExample.QuickSortOne(),
                 _ => RunAll()
             };
         }
@@ -32,7 +34,7 @@ namespace Sorting
             InsertionSortExample.InsertionSortOne();
             MergeSortExample.MergeSortOne();
             HeapSortExample.HeapSortOne();
-
+            QuickSortExample.QuickSortOne();
             return 0;
         }
     }

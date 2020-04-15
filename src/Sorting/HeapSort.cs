@@ -32,7 +32,7 @@ namespace Sorting
                 }
                 Print(arr, "max-heap: ");
                 // Sort
-                for (int i = 1; i < arr.Length - 1; i++)
+                for (int i = 1; i < arr.Length; i++)
                 {
                     Console.Write($"[i = {i}]\t{string.Join(',', arr.ToArray())}\t->\t");
                     ref var current = ref arr[^i];

@@ -31,10 +31,10 @@ namespace Sorting
                 int i = 0, j = 0, k = 0;
                 while (k < res.Length)
                 {
-                    res[k++] = (i, j) switch
+                    res[k++] = (i == arr1.Length, j == arr2.Length) switch
                     {
-                        _ when i == arr1.Length => arr2[j++],
-                        _ when j == arr2.Length => arr1[i++],
+                        (true, _) => arr2[j++],
+                        (_, true) => arr1[i++],
                         _ => arr1[i].CompareTo(arr2[j]) > -1 ? arr2[j++] : arr1[i++]
                     };
                 }
