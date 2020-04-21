@@ -22,8 +22,6 @@ In my opinion, understanding of classical algorithms is essential since it allow
 
 *Insertion Sort* is efficient algorithms for small number of elements. The index `j` indicates current element being inserted. At the beginning of each iteration of the *for* loop, which is indexed by `j`, the subarray consisting of elements `A[1..j-1]` constitutes the current sorted subarray. As a result, by the `j = n + 1, where n = A.length` original array is sorted. This is an example of **incremental approach**: having sorted the subarray `A[1..j-1]`, we inserted the single element `A[j]` into proper place, yielding the sorted subarray `A[1..j]`.
 
-<!-- ![](https://user-images.githubusercontent.com/8037439/79077454-8a338a80-7d0a-11ea-9bdb-a51eb896c8c8.png =250x250) -->
-
 <img src="https://user-images.githubusercontent.com/8037439/79077454-8a338a80-7d0a-11ea-9bdb-a51eb896c8c8.png" alt="insertion-sort-pseudocode" width="30%">
 
 Let's define sorter interface for convenience:
@@ -68,8 +66,7 @@ The recursion "bottom out" when the sequence to be sorted has length `1`, since 
 
 As you can see, *Merge Sort* requires additional space of `n` to combine result of subroutines. Unlike *Insertion Sort*, *Merge Sort* doesn't sort *in place* because it requires non-constant additional space `O(n)`.
 
-<img src="https://user-images.githubusercontent.com/8037439/79137084-bad2fd00-7dba-11ea-8de6-7a68d1c00359.png
-" alt="merge-sort-pseudocode" width="25%">
+<img src="https://user-images.githubusercontent.com/8037439/79137084-bad2fd00-7dba-11ea-8de6-7a68d1c00359.png" alt="merge-sort-pseudocode" width="25%">
 
 ### Implementation
 
@@ -108,13 +105,11 @@ private Span<TItem> Merge(ReadOnlySpan<TItem> arr1, ReadOnlySpan<TItem> arr2)
 
 This operation is intended to restore max-heap property for given node `i`. Obviously, it is possible to build max-heap by applying *max-heapify* operation to relevant nodes.
 
-<img src="https://user-images.githubusercontent.com/8037439/79236516-b7e91280-7e75-11ea-958c-89838a0ab215.png
-" alt="heapify" width="25%">
+<img src="https://user-images.githubusercontent.com/8037439/79236516-b7e91280-7e75-11ea-958c-89838a0ab215.png" alt="heapify" width="25%">
 
 *Heap Sort* algorithm starts by building max-heap. Since the maximum element is stored in root element  `A[1]`. We can put it final position by exchanging it with `A[n]`. After that, all we need to do it to restore max-heap property for `A[1]` element for `A[1..n-1]` heap. As result, we sort array by repeating this process down to heap of size `2`. As you can see the sorting part is incremental in-place algorithm. max-heap could be built based on divide-and-conquer approach.
 
-<img src="https://user-images.githubusercontent.com/8037439/79240753-db628c00-7e7a-11ea-8802-c81166038fce.png
-" alt="heap-sort" width="25%">
+<img src="https://user-images.githubusercontent.com/8037439/79240753-db628c00-7e7a-11ea-8802-c81166038fce.png" alt="heap-sort" width="25%">
 
 ### Implementation
 
@@ -169,11 +164,9 @@ private ref TItem LargestOf(ref TItem item1, ref TItem item2) =>
 
 Performance of *Quick Sort* is determined by Partitioning. In worst-case scenario, every Partition routine produces one problem with `n-1` elements and one with 0 elements, the runtime `T(n) = O(n^2)`. The way we select pivot element in *Quick Sort* is a subject of speculation and could be varied depending nature of data.
 
-<img src="https://user-images.githubusercontent.com/8037439/79313545-29be6c00-7f09-11ea-9d2a-a274ba177b89.png
-" alt="heap-sort" width="20%">
+<img src="https://user-images.githubusercontent.com/8037439/79313545-29be6c00-7f09-11ea-9d2a-a274ba177b89.png" alt="heap-sort" width="20%">
 
-<img src="https://user-images.githubusercontent.com/8037439/79313548-2b882f80-7f09-11ea-99f6-d5fb8b28334b.png
-" alt="heap-sort" width="20%">
+<img src="https://user-images.githubusercontent.com/8037439/79313548-2b882f80-7f09-11ea-99f6-d5fb8b28334b.png" alt="heap-sort" width="20%">
 
 ### Implementation
 
@@ -214,8 +207,7 @@ There are family of algorithms that have better performance characteristics. For
 
 So design technique - **make use of nature of input data**.
 
-<img src="https://user-images.githubusercontent.com/8037439/79342990-83895b00-7f36-11ea-9899-7cfd582a3ad9.png
-" alt="bucket-sort" width="30%">
+<img src="https://user-images.githubusercontent.com/8037439/79342990-83895b00-7f36-11ea-9899-7cfd582a3ad9.png" alt="bucket-sort" width="30%">
 
 To define this type of algorithm, we need to define a separate interface:
 
